@@ -1,0 +1,150 @@
+* {
+  -webkit-box-sizing: border-box; -moz-box-sizing: border-box;  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  margin: 0px;
+}
+
+#navbar { /* <nav> */
+  position: fixed;
+    top: 0px;
+  
+  height: 42px;
+  width: 100%;
+  
+  background-color: black;
+  border-bottom: 1px solid gold;
+}
+    
+    #dropdown__menu__button { /* <div> */
+      float: left;
+      height: 100%;
+      width: 50px;
+      
+      padding: 12px;
+     
+      background-color: black;
+      border-right: 1px solid gold;
+    }
+    
+        .icon--menu {
+          
+          color: gold;
+        }
+    
+    #logo { /* <p> */
+      float: left;
+      color: white;
+      margin: 0px;
+      padding: 8px 15px;
+      
+      font-family: Montserrat;
+      font-weight: ;
+      font-size: 21px;
+      letter-spacing: 2px;
+    }
+    
+    #share__buttons { /* <div> */
+      float: right;
+      height: 100%;
+      padding: 6px 8px;
+    }
+    .fb-share-button {
+      float: right;
+      margin-right: 15px;
+    }
+    .twitter-share-button {
+      float: right;
+    }
+ 
+    
+#site__wrapper { /* <div> */
+ text-align: center;
+ height: 100vh;
+}
+
+    #site__wrapper:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -0.25em; /* Adjusts for spacing */
+    }
+
+#site__content { /* <div> */
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 620px;
+}
+
+#site__header { /* <div> */
+  padding: 20px 10px;
+  border-bottom: 1px solid #ececec;
+  max-width: 100%;
+}
+
+#site__header h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+ font-size: 275%;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: gold;
+  margin: 0px auto;
+  transition: all 1.5s;
+
+}
+  h1:hover {
+   color: white;
+   transition: all 1.5s;
+  }
+table {
+  margin: 0px auto 20px;
+}
+
+#site__hook {
+ padding: 20px 0px;
+}
+
+    #site__hook__text {
+      
+      font-family: Ubuntu;
+      font-size: 110%;
+      color: white;
+      margin: 0px;
+      transition: all 1.5s;
+    }
+    #site__hook__text:hover {
+      color:gold;
+      transition: all 1.5s;
+    }
+
+#credit {
+  padding-top:8px;
+}
+
+#footer { /* <div> */
+  position: fixed;
+    bottom: 0px;
+    left: 0px;
+    
+  height: 40px;
+  width: 100%;
+  
+  background-color: #2a2a2a;
+  background-image: url("./bar-bg.png");
+  border-top: 1px solid black;
+}
+#paypal {
+  padding-bottom: 3px;
+}
+#creditcard {
+  padding-bottom: 3px;
+}
