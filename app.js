@@ -19,13 +19,9 @@ app.set('port', (process.env.PORT || 8080));
 
 /* Get users IP and send to client */
 app.use(function(req, res, next) {
-  publicIp.v4().then(ip => {
-    console.log(ip);
-    //=> '46.5.21.123'
-  });
- // var clientIP = myip.getLocalIP4();
-
-    next();
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+  console.log(ip + " connected");
+  next();
 });
 
 app.use(express.static(path.join(__dirname, '/client')));       // set the static files location
