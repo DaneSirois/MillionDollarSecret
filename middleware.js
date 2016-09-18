@@ -24,7 +24,7 @@ module.exports = {
         console.log("Connected to Database");
         var userCollection = db.collection('users');
 
-        return userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
+        userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
             userObject = userObj;
