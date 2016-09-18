@@ -26,10 +26,10 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
-            return userObject = userObj;
+            userObject = userObj;
           } else {
             console.log("User Not Found");
-            return userObject = "nothing";
+            userObject = "nothing";
             console.log(userObject);
           }
         });
@@ -39,9 +39,6 @@ module.exports = {
 
       db.close()
     });
-
-
-    console.log(req.userObject);
 
     next();
   },
