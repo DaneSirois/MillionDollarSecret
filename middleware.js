@@ -28,6 +28,7 @@ module.exports = {
             db.close();
           } else {
             req.userObject = null;
+            console.log("FUCKK");
             db.close();
           }
         });
