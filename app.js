@@ -7,26 +7,20 @@ var methodOverride = require('method-override');
 
 var mongo = require('mongodb');
 
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 // Import Middleware:
 var middleware = require('./middleware.js');
+
+
+var users = require('./routes/users');
+
+
 
 var app = express();
 var server = require('http').createServer(app);
 
 app.set('port', (process.env.PORT || 8080));
 
-
-
 app.use(express.static(path.join(__dirname, '/client')));       // set the static files location
-
-
-app.use(middleware.getUsersIp);
-app.use(middleware.checkDatabaseForUser);
-app.use(middleware.createUserWithIp);
 
 app.use(favicon(__dirname + '/client/css/img/favicon.ico'));
 app.use(logger('dev'));                         // log every request to the console

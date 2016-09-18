@@ -27,7 +27,7 @@ module.exports = {
             setReqParam(userObj);
           } else {
             console.log("User Not Found");
-            setReqParam("nothing");
+            setReqParam(null);
           }
         });
 
@@ -38,9 +38,8 @@ module.exports = {
 
     var setReqParam = function (userObject) {
       console.log(userObject);
-      return req.dog = userObject;
+      return req.userObject = userObject;
     };
-
 
     next();
   },
@@ -49,13 +48,12 @@ module.exports = {
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
 
-    if (req.dog === "nothing") {
-      console.log('hi');
+    if (req.userObject === null) {
       MongoClient.connect(url, function(err, db) {
         if (err) {
           console.log("Unable to connect to DB");
         } else {
-          console.log("Connected to Database - Creating User:");
+          console.log("Connected to Database - Creating User..");
           var userCollection = db.collection('users');
 
           // Add the user to DB:
@@ -63,7 +61,7 @@ module.exports = {
 
           // Set 'userObj' to the newly added user
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
-            req.userObject = userObj;
+            setReqParam(userObj);
             console.log("Created new user in DB: " + userObj);
           });
           db.close();
@@ -71,7 +69,11 @@ module.exports = {
       });
 
     } else { // If the user already exists:
-      next();
+
     }
+
+    var setReqParam = function (userObject) {
+      return req.userObject = userObject;
+    };
   }
 };

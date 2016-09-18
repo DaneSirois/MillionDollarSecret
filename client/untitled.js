@@ -1,22 +1,10 @@
-let createUser = () => {
-  /
-}
+$.ajax({
+  dataType: "json",
+  url: "/getUser",
+  data: data,
+  success: success
+});
 
-let checkDatabaseForMatchingIp = (ipAddress) => {
-
-};
-
-// when user navigates to '/thesecret'
-let checkIfReturningUser = (ipAddress) => {
-  if (checkDatabaseForMatchingIp(ipAddress) === false) {
-    //deny access
-    //redirect to '/'
-  } else {
-   //Grant access
-  }
-};
-
-{
-  "user": ip....,
-  "paymentComplete": false
-}
+var userObject = $.getJSON( "/getUser", function( data ) {
+  return data;
+});
