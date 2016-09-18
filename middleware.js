@@ -25,10 +25,11 @@ module.exports = {
           if (userObj) {
             console.log(userObj);
             req.userObject = userObj;
+            db.close();
           } else {
             req.userObject = null;
+            db.close();
           }
-          db.close();
         });
       }
     });
@@ -55,9 +56,9 @@ module.exports = {
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
             req.userObject = userObj;
             console.log("Created new user in DB: " + userObj);
+            db.close();
           });
         }
-        db.close();
       });
 
       next();
