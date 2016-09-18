@@ -32,6 +32,7 @@ module.exports = {
             console.log("User Not Found");
             userObject = "nothing";
             console.log(userObject);
+            req.userObject = userObject;
           }
         });
       }
@@ -39,7 +40,7 @@ module.exports = {
       db.close()
     });
 
-    req.userObject = userObject;
+
     next();
   },
   createUserWithIp: function (req, res, next) {
