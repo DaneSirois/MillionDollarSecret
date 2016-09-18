@@ -45,7 +45,7 @@ module.exports = {
         if (err) {
           console.log("Unable to connect to DB");
         } else {
-          console.log("Connected to Database");
+          console.log("Connected to Database 2");
           var userCollection = db.collection('users');
 
           // Add the user to DB:
