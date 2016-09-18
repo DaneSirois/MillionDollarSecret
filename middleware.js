@@ -39,7 +39,7 @@ module.exports = {
     var setReqParam = function (userObject) {
       console.log(userObject);
       var doge = userObject;
-      req.dog = doge;
+      return req.dog = doge;
     };
     next();
   },
