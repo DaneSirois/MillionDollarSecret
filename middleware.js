@@ -27,7 +27,7 @@ module.exports = {
             req.userObject = userObj;
             db.close();
           } else {
-            req.userObject = "null";
+            req.userObject = "nothing";
             console.log("User Not Found");
             db.close();
           }
@@ -41,7 +41,8 @@ module.exports = {
 
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
-    if (userObj === "null") {
+
+    if (userObj === "nothing") {
       console.log('hi');
       MongoClient.connect(url, function(err, db) {
         if (err) {
