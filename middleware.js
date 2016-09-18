@@ -37,6 +37,7 @@ module.exports = {
     });
 
     var setReqParam = function (userObject) {
+      console.log(userObject);
       return req.dog = userObject;
     };
 
