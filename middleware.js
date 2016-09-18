@@ -27,8 +27,8 @@ module.exports = {
             req.userObject = userObj;
             db.close();
           } else {
-            req.userObject = null;
-            console.log("FUCKK");
+            req.userObject = "null";
+            console.log("User Not Found");
             db.close();
           }
         });
@@ -42,12 +42,12 @@ module.exports = {
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
 
-    if (userObj === null) {
+    if (userObj === "null") {
       MongoClient.connect(url, function(err, db) {
         if (err) {
           console.log("Unable to connect to DB");
         } else {
-          console.log("Connected to Database 2");
+          console.log("Connected to Database - Creating User:");
           var userCollection = db.collection('users');
 
           // Add the user to DB:
@@ -57,12 +57,10 @@ module.exports = {
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
             req.userObject = userObj;
             console.log("Created new user in DB: " + userObj);
-            db.close();
           });
+          db.close();
         }
       });
-
-      next();
 
     } else { // If the user already exists:
       next();
