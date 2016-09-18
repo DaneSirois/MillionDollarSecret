@@ -31,8 +31,8 @@ module.exports = {
             userObject = userObj;
           } else {
             console.log("User Not Found");
-            userObject = "nothing";
-            return req.dog = "nothing";
+            var userObject = "nothing";
+            return req.dog = userObject;
             console.log(req.dog);
           }
         });
