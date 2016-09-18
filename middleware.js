@@ -32,14 +32,13 @@ module.exports = {
           } else {
             console.log("User Not Found");
             userObject = "nothing";
-            return req.dog = userObject;
+            return req.dog = "nothing";
             console.log(req.dog);
           }
         });
 
       }
 
-      console.log(userObject);
       db.close()
     });
 
