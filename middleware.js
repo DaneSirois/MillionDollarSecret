@@ -13,10 +13,8 @@ module.exports = {
   checkDatabaseForUser: function (req, res, next) {
 
     var clientsIp = req.clientsIp;
-    var dog = "nothing";
 
     MongoClient.connect(url, function(err, db) {
-
 
       if (err) {
         console.log("Unable to connect to DB");
@@ -26,12 +24,10 @@ module.exports = {
 
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
-            console.log(userObj);
-            userObject = userObj;
+            setReqParam(userObj);
           } else {
             console.log("User Not Found");
-            var userObject = "nothing";
-            return dog = userObject;
+            setReqParam("nothing");
           }
         });
 
@@ -40,7 +36,10 @@ module.exports = {
       db.close()
     });
 
-    req.dog = dog;
+    var setReqParam = function (userObject) {
+      return req.dog = userObject;
+    };
+
 
     next();
   },
