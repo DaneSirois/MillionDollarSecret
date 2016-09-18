@@ -13,7 +13,6 @@ module.exports = {
   checkDatabaseForUser: function (req, res, next) {
 
     var clientsIp = req.clientsIp;
-    var userObject;
 
     MongoClient.connect(url, function(err, db) {
       if (err) {
@@ -25,12 +24,12 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
-            userObject = userObj;
-            return
+
+            return var userObject = userObj;
           } else {
-            userObject = "nothing";
+
             console.log("User Not Found");
-            return
+            return var userObject = "nothing";
           }
         });
       }
