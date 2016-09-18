@@ -32,7 +32,7 @@ module.exports = {
             console.log("User Not Found");
             userObject = "nothing";
             console.log(userObject);
-            req.userObject = userObject;
+            req.dog = userObject;
           }
         });
       }
@@ -48,7 +48,7 @@ module.exports = {
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
 
-    if (userObj === "nothing") {
+    if (req.dog === "nothing") {
       console.log('hi');
       MongoClient.connect(url, function(err, db) {
         if (err) {
