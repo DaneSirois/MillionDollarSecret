@@ -23,13 +23,14 @@ module.exports = {
 
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
+            var userObject = userObj;
             console.log(userObj);
 
-            return var userObject = userObj;
+            return userObject;
           } else {
-
+            var userObject = "nothing";
             console.log("User Not Found");
-            return var userObject = "nothing";
+            return userObject;
           }
         });
       }
