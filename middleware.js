@@ -13,10 +13,10 @@ module.exports = {
   checkDatabaseForUser: function (req, res, next) {
 
     var clientsIp = req.clientsIp;
+    var userObject;
 
-
-     var userObject = MongoClient.connect(url, function(err, db) {
-
+    MongoClient.connect(url, function(err, db) {
+      var userObject;
 
       if (err) {
         console.log("Unable to connect to DB");
@@ -24,22 +24,23 @@ module.exports = {
         console.log("Connected to Database");
         var userCollection = db.collection('users');
 
-        return userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
+        userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
-            return userObj;
+            userObject = userObj;
           } else {
             console.log("User Not Found");
-            return "nothing";
-
+            userObject = "nothing";
+            return req.dog = userObject;
+            console.log(userObject);
           }
         });
       }
 
+
       db.close()
     });
 
-    req.dog = userObject;
 
     next();
   },
