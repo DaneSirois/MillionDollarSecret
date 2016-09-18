@@ -23,7 +23,7 @@ module.exports = {
       } else {
         console.log("Connected to Database");
         var userCollection = db.collection('users');
-        var userObject;
+        req.dog = userObject;
 
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
@@ -32,8 +32,7 @@ module.exports = {
           } else {
             console.log("User Not Found");
             var userObject = "nothing";
-            return req.dog = userObject;
-            console.log(req.dog);
+            return userObject;
           }
         });
 
