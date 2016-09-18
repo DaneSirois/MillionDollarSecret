@@ -25,11 +25,12 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             setReqParam(userObj);
-            db.close()
+            db.close();
           } else {
             console.log("User Not Found");
             setReqParam("null");
-            db.close()
+            db.close();
+            next();
           }
         });
 
@@ -41,7 +42,7 @@ module.exports = {
       var doge = userObject;
       return req.dog = doge;
     };
-    next();
+
   },
   createUserWithIp: function (req, res, next) {
 
