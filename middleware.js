@@ -38,9 +38,9 @@ module.exports = {
 
     var setReqParam = function (userObject) {
       console.log(userObject);
-      return req.dog = userObject;
+      var doge = userObject;
+      req.dog = doge;
     };
-
     next();
   },
   createUserWithIp: function (req, res, next) {
