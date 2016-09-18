@@ -36,11 +36,10 @@ module.exports = {
         });
       }
 
-      req.userObject = userObject;
-
       db.close()
     });
 
+    req.userObject = userObject;
     next();
   },
   createUserWithIp: function (req, res, next) {
