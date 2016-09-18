@@ -26,11 +26,11 @@ module.exports = {
           if (userObj) {
             console.log(userObj);
             userObject = userObj;
-
+            return
           } else {
             userObject = "nothing";
             console.log("User Not Found");
-
+            return
           }
         });
       }
