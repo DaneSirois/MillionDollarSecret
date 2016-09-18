@@ -38,7 +38,7 @@ module.exports = {
 
     var setReqParam = function (userObject) {
       console.log(userObject);
-      return req.userObject = userObject;
+      return req.dog = userObject;
     };
 
     next();
@@ -48,7 +48,7 @@ module.exports = {
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
 
-    if (userObj === "null") {
+    if (req.dog === "null") {
       MongoClient.connect(url, function(err, db) {
         if (err) {
           console.log("Unable to connect to DB");
@@ -63,8 +63,8 @@ module.exports = {
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
             setReqParam(userObj);
             console.log("Created new user in DB: " + userObj);
+            db.close();
           });
-          db.close();
         }
       });
 
