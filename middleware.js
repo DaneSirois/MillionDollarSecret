@@ -24,10 +24,10 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
-            req.userObject = userObj;
+            return req.userObject = userObj;
             db.close();
           } else {
-            req.userObject = "nothing";
+            return req.userObject = "nothing";
             console.log("User Not Found");
             db.close();
           }
@@ -56,7 +56,7 @@ module.exports = {
 
           // Set 'userObj' to the newly added user
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
-            req.userObject = userObj;
+            return req.userObject = userObj;
             console.log("Created new user in DB: " + userObj);
           });
           db.close();
