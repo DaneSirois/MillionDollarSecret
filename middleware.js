@@ -15,6 +15,8 @@ module.exports = {
     var clientsIp = req.clientsIp;
 
     MongoClient.connect(url, function(err, db) {
+      var userObject;
+
       if (err) {
         console.log("Unable to connect to DB");
       } else {
@@ -23,23 +25,21 @@ module.exports = {
 
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
-            var userObject = userObj;
             console.log(userObj);
-
-            return userObject;
+            return userObject = userObj;
           } else {
-            var userObject = "nothing";
             console.log("User Not Found");
-            return userObject;
+            return userObject = "nothing";
+            console.log(userObject);
           }
         });
       }
+
+      req.userObject = userObject;
+
       db.close()
     });
 
-    console.log(userObject);
-
-    req.userObject = userObject;
 
     console.log(req.userObject);
 
