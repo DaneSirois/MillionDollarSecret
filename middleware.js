@@ -26,19 +26,23 @@ module.exports = {
           if (userObj) {
             console.log(userObj);
             userObject = userObj;
-            db.close();
+
           } else {
             userObject = "nothing";
             console.log("User Not Found");
-            db.close();
+
           }
         });
       }
+      db.close()
     });
 
     console.log(userObject);
-    console.log(req.userObject);
+
     req.userObject = userObject;
+
+    console.log(req.userObject);
+
     next();
   },
   createUserWithIp: function (req, res, next) {
