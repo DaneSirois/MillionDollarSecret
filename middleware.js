@@ -41,7 +41,7 @@ module.exports = {
 
     var clientsIp = req.clientsIp;
     var userObj = req.userObject;
-
+    console.log("hi");
     if (userObj === "null") {
       MongoClient.connect(url, function(err, db) {
         if (err) {
