@@ -13,6 +13,7 @@ module.exports = {
   checkDatabaseForUser: function (req, res, next) {
 
     var clientsIp = req.clientsIp;
+    var userObject;
 
     MongoClient.connect(url, function(err, db) {
       if (err) {
@@ -24,10 +25,10 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             console.log(userObj);
-            return req.userObject = userObj;
+            userObject = userObj;
             db.close();
           } else {
-            return req.userObject = "nothing";
+            userObject = "nothing";
             console.log("User Not Found");
             db.close();
           }
@@ -35,6 +36,7 @@ module.exports = {
       }
     });
 
+    req.userObject = userObject;
     next();
   },
   createUserWithIp: function (req, res, next) {
@@ -56,7 +58,7 @@ module.exports = {
 
           // Set 'userObj' to the newly added user
           userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
-            return req.userObject = userObj;
+            req.userObject = userObj;
             console.log("Created new user in DB: " + userObj);
           });
           db.close();
