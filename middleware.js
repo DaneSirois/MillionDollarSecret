@@ -40,8 +40,12 @@ module.exports = {
     var setReqParam = function (userObject) {
       console.log(userObject);
       var doge = userObject;
-      return req.dog = doge;
+      req.dog = doge;
+      return nextMiddleware();
     };
+    var nextMiddleware = function () {
+      next();
+    }
 
   },
   createUserWithIp: function (req, res, next) {
