@@ -16,13 +16,14 @@ module.exports = {
     var userObject;
 
     MongoClient.connect(url, function(err, db) {
-      var userObject;
+
 
       if (err) {
         console.log("Unable to connect to DB");
       } else {
         console.log("Connected to Database");
         var userCollection = db.collection('users');
+        var userObject;
 
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
@@ -32,9 +33,10 @@ module.exports = {
             console.log("User Not Found");
             userObject = "nothing";
             return req.dog = userObject;
-
+            console.log(req.dog);
           }
         });
+
       }
 
       console.log(userObject);
