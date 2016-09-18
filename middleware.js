@@ -36,6 +36,8 @@ module.exports = {
       }
     });
 
+    console.log(userObject);
+    console.log(req.userObject);
     req.userObject = userObject;
     next();
   },
