@@ -5,34 +5,37 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var myip = require('quick-local-ip');
-const publicIp = require('public-ip');
+var mongo = require('mongodb');
 
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+// Import Middleware:
+var middleware = require('./middleware.js');
 
 var app = express();
 var server = require('http').createServer(app);
 
 app.set('port', (process.env.PORT || 8080));
 
-/* Get users IP and send to client */
-app.use(function(req, res, next) {
-  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-  console.log(ip + " connected");
-  next();
-});
+
 
 app.use(express.static(path.join(__dirname, '/client')));       // set the static files location
-app.use(logger('dev'));                         // log every request to the console
-app.use(bodyParser());                          // pull information from html in POST
-app.use(methodOverride());                      // simulate DELETE and PUT
+
+
+app.use(middleware.getUsersIp);
+app.use(middleware.checkDatabaseForUser);
+app.use(middleware.createUserWithIp);
+
 app.use(favicon(__dirname + '/client/css/img/favicon.ico'));
+app.use(logger('dev'));                         // log every request to the console
+app.use(bodyParser.json());                          // pull information from html in POST
+app.use(methodOverride());                      // simulate DELETE and PUT
 
 
-app.use('/', routes);
-app.use('/thesecret', routes);
+// Initialize your routes:
+require("./routes.js")(app);
 
 
 // catch 404 and forward to error handler
@@ -42,6 +45,8 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+/*
 // error handlers
 
 // development error handler
@@ -66,6 +71,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+*/
+
 server.listen(app.get('port'));
 
-module.exports = app;
+module.exports = {
+  app: app
+}

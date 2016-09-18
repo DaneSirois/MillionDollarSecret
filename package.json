@@ -9,10 +9,12 @@
   "dependencies": {
     "body-parser": "~1.15.1",
     "debug": "~2.2.0",
+    "ejs": "^2.5.2",
     "express": "~4.13.4",
     "ipware": "0.0.8",
     "jade": "~1.11.0",
     "method-override": "^2.3.6",
+    "mongodb": "^2.2.10",
     "morgan": "~1.7.0",
     "public-ip": "^2.0.1",
     "quick-local-ip": "^1.0.7",
