@@ -25,15 +25,15 @@ module.exports = {
         userCollection.findOne({"ipAddress": clientsIp}, function(err, userObj) {
           if (userObj) {
             setReqParam(userObj);
+            db.close()
           } else {
             console.log("User Not Found");
             setReqParam("null");
+            db.close()
           }
         });
 
       }
-
-      db.close()
     });
 
     var setReqParam = function (userObject) {
